@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Spin-off of "KA JavaScript in HTML(working)"</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+</head>
+<body>
+    <h1> go to line 35 of this html then copy/paste<br>your processing.js in!!!</h1>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var processing = new Processing(canvas, function(processing) {
+            processing.size(400, 400);
+            processing.background(0xFFF);
+    
+            var mouseIsPressed = false;
+            processing.mousePressed = function () { mouseIsPressed = true; };
+            processing.mouseReleased = function () { mouseIsPressed = false; };
+    
+            var keyIsPressed = false;
+            processing.keyPressed = function () { keyIsPressed = true; };
+            processing.keyReleased = function () { keyIsPressed = false; };
+    
+            function getImage(s) {
+                var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                processing.externals.sketch.imageCache.add(url);
+                return processing.loadImage(url);
+            }
+    
+            with (processing) {
+                
+                
+             //pong
+var x = 130;
+var y = 320;
+var x2 = 130;
+var y2 = 320;
+var keys = [];
+
+keyPressed = function(){
+keys[keyCode] = true;
+};
+keyReleased = function(){
+keys[keyCode] = false;
+};
+
+
+var game = function(){
+draw= function() {
+    background(255, 255, 255);
+    fill(94, 72, 72);
+ rect(x2,y2,132,18);
+ fill(255, 0, 0);
+ ellipse(x+111,y-9,20,20);
+ if(keys[LEFT]){
+     x2-=5;
+ }
+ if(keys[RIGHT]){
+     x2+=5;
+ }
+ 
+ if(mouseIsPressed){
+   y = y - 5;  
+ }
+};
+};
+game();
+                
+                
+            }
+            if (typeof draw !== 'undefined') processing.draw = draw;
+        });
+    </script>
+</body>
+</html>
